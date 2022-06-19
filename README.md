@@ -36,7 +36,7 @@ has_many :purchases
 belongs_to :user
 has_one :purchase history
 
-## buy addresses
+## buy_addresses
 
 |Column          |Type        |Options                        |
 |----------------|------------|-------------------------------|
@@ -46,13 +46,13 @@ has_one :purchase history
 |street_address  |string      |null: false                    |
 |building        |string      |                               |
 |phone_number    |string      |null: false                    |
-|purchase history|references  |null: false, foreign_key: true |
+|purchase_history|references  |null: false, foreign_key: true |
 
 
 ### Association
 belongs_to :purchase history
 
-## purchase histories
+## purchase_histories
 
 |Column              |Type       |Options                        |
 |--------------------|-----------|-------------------------------|
