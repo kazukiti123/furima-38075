@@ -34,7 +34,7 @@ has_many :purchases
 
 ### Association
 belongs_to :user
-has_one :purchase history
+has_one :purchase_history
 
 ## buy_addresses
 
@@ -50,7 +50,7 @@ has_one :purchase history
 
 
 ### Association
-belongs_to :purchase history
+belongs_to :purchase_history
 
 ## purchase_histories
 
