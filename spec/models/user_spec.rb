@@ -33,9 +33,15 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password must include both lettes and numbers")
       end
+      it "passwordは全角英字混合では保存できない" do
+        @user.password = '１２３ａｂｃ'
+        @user.password_confirmation = "１２３ａｂｃ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password must include both lettes and numbers")
+      end
       it "passwordがアルファベットのみでは登録できない" do
-        @user.password = 'aaaaaa'
-        @user.password_confirmation = "aaaaaa"
+        @user.password = 'abcdef'
+        @user.password_confirmation = "abcdef"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password must include both lettes and numbers")
       end
@@ -68,12 +74,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
-      it "nicknameが空では登録できない" do
-        @user.nickname = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname can't be blank")
-      end
-
       it "first_name_kanjiが空では登録できない" do
         @user.first_name_kanji = ""
         @user.valid?

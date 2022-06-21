@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  zenkaku = /\A[ぁ-んァ-ン一-龥]+\z/
+  zenkaku = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
   katakana = /\A[ァ-ヶー－]+\z/
 
  validates :password, format: {with: VALID_PASSWORD_REGEX, message: 'must include both lettes and numbers' }, allow_blank: true
@@ -22,8 +22,8 @@ class User < ApplicationRecord
  validates :birthday, presence: true
 
 
- has_many :items 
- has_many :purchases
+ #has_many :items 
+ #has_many :purchases
 end
 
 
