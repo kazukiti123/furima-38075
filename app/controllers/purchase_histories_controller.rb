@@ -1,7 +1,7 @@
 class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :@item = Item.find(params[:item_id])
-
+  before_action :@item = Item.find(params[:item_id]) [:index, :create]
+  
   def index
     if current_user.id != @item.user.id && @item.purchase_history.blank?
       @order = Order.new
@@ -11,7 +11,6 @@ class PurchaseHistoriesController < ApplicationController
   end
 
   def create
-   
     @order  = Order.new(order_params)
     if @order.valid?
       pay_item
