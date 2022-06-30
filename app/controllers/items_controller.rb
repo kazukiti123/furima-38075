@@ -26,7 +26,12 @@ before_action :item_set, only: [:show, :edit, :update, :destroy]
     unless current_user == @item.user || @item.purchase_history == nil
       redirect_to root_path
     end
-  
+    if @item.save
+      redirect_to root_path
+    else
+       render :new
+    end
+   
   end
 
   def update
