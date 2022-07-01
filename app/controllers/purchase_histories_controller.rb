@@ -1,6 +1,6 @@
 class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :@item = Item.find(params[:item_id]) [:index, :create]
+  before_action :item_set [:index, :create]
   
   def index
     if current_user.id != @item.user.id && @item.purchase_history.blank?
@@ -34,5 +34,9 @@ class PurchaseHistoriesController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def item_set
+    @item = Item.find(params[:id])
   end
 end
