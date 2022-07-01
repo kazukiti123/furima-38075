@@ -1,6 +1,6 @@
 class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  before_action :item_set [:index, :create]
+  before_action :item_set
   
   def index
     if current_user.id != @item.user.id && @item.purchase_history.blank?
