@@ -14,7 +14,7 @@ class PurchaseHistoriesController < ApplicationController
     @order  = Order.new(order_params)
     if @order.valid?
       pay_item
-      @order.create
+      @order.save
       redirect_to root_path
     else
       render :index

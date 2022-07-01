@@ -16,8 +16,8 @@ class Order
     validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
     validates :phone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/, message: "is invalid. Input only number"}, allow_blank: true
 
-  def create
+  def save
     purchase_history = PurchaseHistory.create(user_id: user_id, item_id: item_id) 
-    BuyAddress.create(postal_code: postal_code,prefecture_id: prefecture_id,city: city,street_address: street_address,building: building,phone_number: phone_number,purchase_history_id: purchase_history.id)
+    BuyAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street_address: street_address, building: building, phone_number: phone_number, purchase_history_id: purchase_history.id)
   end
 end
