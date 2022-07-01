@@ -23,10 +23,9 @@ before_action :item_set, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
-    unless current_user == @item.user
+    unless current_user == @item.user && @item.purchase_history == nil
       redirect_to root_path
     end
-  
   end
 
   def update
