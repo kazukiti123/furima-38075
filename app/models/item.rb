@@ -5,11 +5,11 @@ extend ActiveHash::Associations::ActiveRecordExtensions
   validates :name,presence: true
   validates :price,presence: true
   validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999,message: " must be half-size charactor and be setting range."}, allow_blank: true
-  validates :category_id, numericality: {other_than: 1, message: "can't be blank"}
-  validates :send_time_id, numericality: {other_than: 1, message: "can't be blank"}
-  validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
-  validates :postage_id, numericality: {other_than: 1, message: "can't be blank"}
-  validates :states_id, numericality: {other_than: 1, message: "can't be blank"} 
+  validates :category_id, numericality: {other_than: 1, message: "を選択してください"}
+  validates :send_time_id, numericality: {other_than: 1, message: "を選択してください"}
+  validates :prefecture_id, numericality: {other_than: 1, message: "を選択してください"}
+  validates :postage_id, numericality: {other_than: 1, message: "を選択してください"}
+  validates :states_id, numericality: {other_than: 1, message: "を選択してください"} 
 
 
   belongs_to :user
